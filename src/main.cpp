@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x");
+uint256 hashGenesisBlock("0x36a5ab98adeccdb6ace3b9b05d7f5f523313bb494434c84160ba947dd1020b5e");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Ophelia: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1087,12 +1087,16 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
+    if (nHeight == 2) {
+    int64 nSubsidy =  6500000 * COIN;
+    return nSubsidy + nFees;
+}else{
     int64 nSubsidy = 50 * COIN; // 72000 coins a day
 
     // Subsidy is cut in half every 525960 blocks, which will occur approximately every year
     nSubsidy >>= (nHeight / 525960); // Ophelia: 840k blocks in ~1 year
-
     return nSubsidy + nFees;
+}
 }
 
 static const int64 nTargetTimespan = 12 * 60 * 60; // Ophelia: 12 hours
@@ -2772,14 +2776,14 @@ bool InitBlockIndex() {
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
     if (!fReindex) {
         // Genesis Block:
-        // CBlock(hash=12a765e31ffd4059bada, PoW=0000050c34a64b415b6b, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=97ddfbbae6, nTime=1317972665, nBits=1e0ffff0, nNonce=2084524493, vtx=1)
+        // CBlock(hash=12a765e31ffd4059bada, PoW=0000050c34a64b415b6b, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=97ddfbbae6, nTime=1317972665, nBits=1e0ffff0, nNonce=369383, vtx=1)
         //   CTransaction(hash=97ddfbbae6, ver=1, vin.size=1, vout.size=1, nLockTime=0)
         //     CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d0104404e592054696d65732030352f4f63742f32303131205374657665204a6f62732c204170706c65e280997320566973696f6e6172792c2044696573206174203536)
         //     CTxOut(nValue=50.00000000, scriptPubKey=123484710fa689ad5023690c80f3a4)
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "Storm Ophellia Batters Britian";
+        const char* pszTimestamp = "Ophelia: Ireland recovers from worst storm on record - Telegraph 17th October 2017";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2798,7 +2802,7 @@ bool InitBlockIndex() {
         if (fTestNet)
         {
             block.nTime    = 1508500130;
-            block.nNonce   = 0;
+            block.nNonce   = 369383;
         }
 
         //// debug print
@@ -2806,7 +2810,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x"));
+        assert(block.hashMerkleRoot == uint256("0x684e9c7a9e2ec660f4d4a0668366c4cae4bf8a1db0c6b8adc28bdb32ccac596c"));
 if (true && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
