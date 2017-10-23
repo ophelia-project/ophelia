@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x");
+uint256 hashGenesisBlock("0x2097bc0c1839a997bd49e6dfbe2a153b82837a0e50a78a7595fcf1b36439c1a7");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Ophelia: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
