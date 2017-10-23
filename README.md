@@ -1,11 +1,9 @@
 Ophelia integration/staging tree
 ================================
 
-http://www.ophelia.org
-
-Copyright (c) 2009-2017 Bitcoin Developers
-Copyright (c) 2011-2017 Litecoin Developers
-Copyright (c) 2017-2017 Ophelia Developers
+Copyright (c) 2009-2017 Bitcoin Developers<br/>
+Copyright (c) 2011-2017 Litecoin Developers<br/>
+Copyright (c) 2017-2017 Ophelia Developers<br/>
 
 What is Ophelia?
 ----------------
@@ -27,10 +25,8 @@ information or see http://opensource.org/licenses/MIT.
 Problems with libleveldb.a
 ---------------------------
 
-cd src/leveldb
-make clean
-cd ..
-make
+cd src/leveldb<br/>
+make clean<br/>
 
 
 <!-- Development process
