@@ -3,23 +3,20 @@ Ophelia integration/staging tree
 
 http://www.ophelia.org
 
-Copyright (c) 2009-2014 Bitcoin Developers
-Copyright (c) 2011-2014 Ophelia Developers
+Copyright (c) 2009-2017 Bitcoin Developers
+Copyright (c) 2011-2017 Litecoin Developers
+Copyright (c) 2017-2017 Ophelia Developers
 
 What is Ophelia?
 ----------------
 
-Ophelia is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
- - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
-
-The rest is the same as Bitcoin.
- - 50 coins per block
- - 2016 blocks to retarget difficulty
-
-For more information, as well as an immediately useable, binary version of
-the Ophelia client sofware, see http://www.ophelia.org.
+Ophelia is a version of litecoin using scrypt as a proof-of-work algorithm.
+ - 1 minute block times
+ - Subsidy halves yearly (525,960 blocks)
+ - 100 million total coins
+ - Initial 50 coins per block
+ - 770 blocks to retarget difficulty (every 12 hours)
+ - 60% of coins mined in the first 10 years.
 
 License
 -------
@@ -27,7 +24,16 @@ License
 Ophelia is released under the terms of the MIT license. See `COPYING` for more
 information or see http://opensource.org/licenses/MIT.
 
-Development process
+Problems with libleveldb.a
+---------------------------
+
+cd src/leveldb
+make clean
+cd ..
+make
+
+
+<!-- Development process
 -------------------
 
 Developers work in their own trees, then submit pull requests when they think
@@ -70,4 +76,4 @@ Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
     qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
     make -f Makefile.test
     ./ophelia-qt_test
-
+-->
